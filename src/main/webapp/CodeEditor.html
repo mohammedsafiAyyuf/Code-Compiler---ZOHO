@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+	<script type="text/javascript" src="${pageContext.request.contextPath}/HomePage.js"></script>
+    <link rel="stylesheet" href="CodeEditor_css/style.css" />
+</head>
+<body>
+    <div class="control-panel">
+        Select Language:
+        &nbsp; &nbsp;
+        <select id="languages" class="languages" onchange="changeLanguage()">
+            <option value="cpp"> C++ </option>
+            <option value="c"> C </option>
+            <option value="php"> PHP </option>
+            <option value="python"> Python </option>
+            <option value="node"> Node JS </option>
+        </select>
+    </div>
+
+    <div class="editor" id="editor"></div>
+    <div class="highlight_editor" id="highlight_editor" contenteditable="true">
+    	Highlighted code will be displayed here
+    </div>
+    <div class="VariableVal_editor" id="VariableVal_editor" >
+	      <div class="wrapper">
+		    <div id="survey_options">
+		    </div>
+		    
+	        <!-- Variable Value Box Area
+		    <div class="controls">
+		        <button style="overflow: hidden; padding-right: .5em;" onclick="addVariableBox()"> Add Field </button>
+		        <button style="overflow: hidden; padding-right: .5em;" onclick="removeVariableBox()"> Remove Field </button>
+		    </div>
+	        -->
+
+	  </div>
+
+    </div>
+
+
+    <div class="button-container">
+		<input type="number"  id="RandInputCountBox" name="RandInputCountBox" value="1" hidden>
+		<input type="checkbox" id="RandInputCheckBox" name="RandInputCheckBox" value="true" onclick="showRandCountBox(this)">
+		<label for="RandInputCheckBox" style = " font-family:sans-serif; color: white; font-size: 15px;"> Random Input</label><br>
+
+        <button class="btn" onclick="DisplayFileOnDrive()"> Show Files </button>
+
+			<select name="File_display" id="File_display" >
+	    		<option value="" disabled selected>Select</option>
+			</select>
+	        <button class="btn" style="overflow: hidden; padding-right: .5em;" onclick="GetSelectedItem()"> Upload </button>
+
+				
+		<form class="form_btn" method="post" action="FileUpload" enctype="multipart/form-data">
+			<input type="file" accept=".txt, .cpp, CPP" id="cpp_File_input" value="" name="file" onchange="cpp_fileUploder()" required>
+
+		    <input type="submit"  class="btn"  value="Upload" >
+		</form>
+
+		<br>		
+		<!-- 
+        <button class="btn" style="overflow: hidden; padding-right: .5em;" onclick="DisplayCode()"> Display </button>
+		 -->
+        <!--  To highlight code in sample.txt file		
+		<form class="form_btn" action="HomePage" method = "post" enctype="multipart/form-data">
+		  <input class="btn" type="submit"  value="Highlight"  >
+		</form>  
+		-->
+        <button class="btn" onclick="HighlightCode()"> Highlight </button>
+        <button class="btn" onclick="StoreCode()"> Store </button>
+        <button class="btn" onclick="executeCode()"> Run </button>
+
+    </div>
+
+
+	<textarea class="output" rows="10" cols="50"></textarea>
+    
+    <!-- <div class="output" contenteditable="true"></div>
+	 -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="CodeEditor_js/lib/ace.js"></script>
+    <script src="CodeEditor_js/lib/theme-monokai.js"></script>
+    <script src="CodeEditor_js/ide.js"></script>
+
+</body>
+</html>
